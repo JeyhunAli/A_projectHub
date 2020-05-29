@@ -27,7 +27,9 @@ public class BasePage {
 	WebDriver driver;
 	Properties prop;
 
-	public WebDriver init_driver(String browserName) {
+	public WebDriver init_driver(Properties prop) {
+		
+		String browserName =  prop.getProperty("browser");
 
 		if(browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -48,7 +50,7 @@ public class BasePage {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
-		driver.get("https://app.hubspot.com/login/");
+		driver.get(prop.getProperty("url"));
 
    return driver;
 
@@ -62,6 +64,9 @@ public class BasePage {
 	 * then creating object of the fileinputstream class then passing path of the 
 	 * config.properties file 
 	 * then surronding with try catch block and returning prop
+	 * 
+	 * file path here u see ./ it means current directory of your file path 
+	 * 
 	 * @return prop
 	 */
 	
@@ -69,7 +74,7 @@ public class BasePage {
 		
 		prop = new Properties();
 		try {
-			FileInputStream ip = new FileInputStream("/src/main/java/com/qa/config/config.properties");
+			FileInputStream ip = new FileInputStream("./src/main/java/com/qa/config/config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

@@ -1,5 +1,16 @@
 package com.qa.hubspot.tests;
 
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -26,16 +37,19 @@ import com.qa.hubspot.utils.ConstantsUtil;
  */
 
 public class LoginPageTest {
+	
 	BasePage basepage;
 	WebDriver driver; 
 	LoginPage loginPage;
+	Properties prop;
 
 
 	@BeforeTest
 	public void setUp() {
 
 		basepage = new BasePage();
-		driver = basepage.init_driver("chrome");
+		prop = basepage.init_prop();
+		driver = basepage.init_driver(prop);
 		loginPage = new LoginPage(driver);
 
 
@@ -56,18 +70,22 @@ public class LoginPageTest {
 	
 	@Test
     public void verifyAccountdontHaveText() {
-	boolean yes = loginPage.verifyTextDontHaveAccount();
-	System.out.println("The Don't have an account? text displayed: "+yes);
-	Assert.assertTrue(yes, "the text is not displayed");
+
+		String donthaveaccountText = loginPage.verifyTextDontHaveAccount();
 		
+		System.out.println("The Don't have an account? text displayed: "+donthaveaccountText);
+		Assert.assertEquals(donthaveaccountText, ConstantsUtil.Login_Page_Dont_Have_An_Account,"not matched");
+	
+	
 	}
 
 
 	@Test(priority = 3)
 	public void verifyLoginTest() {
-		loginPage.doLogin("Ali-ceyhun@list.ru", "Asderfgty5758" );
+		loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
+	
 	
 	@AfterTest
 	public void tearDown() {

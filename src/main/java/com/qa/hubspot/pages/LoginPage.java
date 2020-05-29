@@ -1,5 +1,7 @@
 package com.qa.hubspot.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -29,7 +31,8 @@ public class LoginPage extends BasePage {
 	By password = By.id("password");
 	By LoginButton = By.id("loginBtn");
 	By signUpLink = By.linkText("Sign up");
-	By dontHaveAccount = By.xpath("//i18n-string[text()=\"Don't have an account?\"]");
+	//By dontHaveAccount = By.xpath("//i18n-string[text()=\"Don't have an account?\"]");
+	By dontHaveAccount = By.xpath("//i18n-string[@data-key='login.signupLink.text']");
 	
 			
 	//2. Constructor 
@@ -50,17 +53,27 @@ public class LoginPage extends BasePage {
 	}
 	
 	
-	public boolean verifyTextDontHaveAccount() {
-		return driver.findElement(this.dontHaveAccount).isDisplayed();
+	public String verifyTextDontHaveAccount() {
+	if( driver.findElement(this.dontHaveAccount).isDisplayed()) {
+		return driver.findElement(dontHaveAccount).getText();
+	}
+	return null;
+		
 	}
 	//here as a param im passing usrname,password as generic if someone will call
 	//this method they can use withoud hard coded 
 	//above and below username password looks same but with the help 
 	//of this im differentiation
-	public void doLogin(String username, String password) {
+	public HomePage doLogin(String username, String password) {
 		driver.findElement(this.username).sendKeys(username);
 		driver.findElement(this.password).sendKeys(password);
 		driver.findElement(this.LoginButton).click();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		
+		return new HomePage(driver);
+		
+		
+		
 	}
 	
 
