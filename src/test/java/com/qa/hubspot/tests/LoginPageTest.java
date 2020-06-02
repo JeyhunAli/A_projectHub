@@ -1,24 +1,10 @@
 package com.qa.hubspot.tests;
 
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.AssertJUnit;
-import java.util.Properties;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.qa.base.BasePage;
-import com.qa.hubspot.pages.LoginPage;
+import com.qa.base.BaseTest;
 import com.qa.hubspot.utils.ConstantsUtil;
 
 /**
@@ -36,24 +22,9 @@ import com.qa.hubspot.utils.ConstantsUtil;
  *
  */
 
-public class LoginPageTest {
+public class LoginPageTest extends BaseTest{
 	
-	BasePage basepage;
-	WebDriver driver; 
-	LoginPage loginPage;
-	Properties prop;
-
-
-	@BeforeTest
-	public void setUp() {
-
-		basepage = new BasePage();
-		prop = basepage.init_prop();
-		driver = basepage.init_driver(prop);
-		loginPage = new LoginPage(driver);
-
-
-	}
+	
 
 	@Test(priority = 2)
 	public void verifyLoginPageTest() {
@@ -87,10 +58,6 @@ public class LoginPageTest {
 
 	
 	
-	@AfterTest
-	public void tearDown() {
-		driver.quit();
-	}
 
 
 

@@ -1,11 +1,11 @@
 package com.qa.hubspot.pages;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.base.BasePage;
+import com.qa.hubspot.utils.ConstantsUtil;
+import com.qa.hubspot.utils.ElementUtil;
 
 /**
  * 
@@ -39,17 +39,21 @@ public class LoginPage extends BasePage {
 	public LoginPage(WebDriver driver) {
 		
 		this.driver = driver;
+		elementUtil = new ElementUtil(driver);
+		
 	}
 	
 	
 	//3. Page actions 
 	public String getLoginPageTitle() {
-		return driver.getTitle();
+		//return driver.getTitle();
+		return elementUtil.waitForTitleToBePresent(ConstantsUtil.Login_Page_title, 10);
 		
 	}
 	
 	public boolean verifySignUpLink() {
-		return driver.findElement(signUpLink).isDisplayed();
+		//return driver.findElement(signUpLink).isDisplayed();
+		return elementUtil.doIsDisplayed(signUpLink);
 	}
 	
 	
@@ -65,10 +69,15 @@ public class LoginPage extends BasePage {
 	//above and below username password looks same but with the help 
 	//of this im differentiation
 	public HomePage doLogin(String username, String password) {
-		driver.findElement(this.username).sendKeys(username);
-		driver.findElement(this.password).sendKeys(password);
-		driver.findElement(this.LoginButton).click();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+//		driver.findElement(this.username).sendKeys(username);
+//		driver.findElement(this.password).sendKeys(password);
+//		driver.findElement(this.LoginButton).click();
+//		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		
+		elementUtil.waitForElementToBeVisible(this.username, 10);
+		elementUtil.doSendKeys(this.username, username);
+		elementUtil.doSendKeys(this.password, password);
+		elementUtil.doClick(this.LoginButton);
 		
 		return new HomePage(driver);
 		
