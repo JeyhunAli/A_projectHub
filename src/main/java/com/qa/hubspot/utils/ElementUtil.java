@@ -2,6 +2,7 @@ package com.qa.hubspot.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -41,6 +42,7 @@ public class ElementUtil {
 		public void doSendKeys(By locator, String value) {
 			getElement(locator).sendKeys(value);
 		}
+		
 
 		public void doClick(By locator) {
 			getElement(locator).click();
@@ -190,7 +192,22 @@ public class ElementUtil {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 			return element;
+					
 		}
+		
+		
+
+		public String wwaitForElementToBeClickable(By locator, int timeout, String text) {
+			WebDriverWait wait = new WebDriverWait(driver, timeout);
+			String element = wait.until(ExpectedConditions.invisibilityOfElementWithText(locator, text)).toString();
+			return element;
+			
+			
+		}
+
+		
+		
+		
 
 		public boolean waitForUrl(String url, int timeout) {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);

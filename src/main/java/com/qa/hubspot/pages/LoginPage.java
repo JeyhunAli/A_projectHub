@@ -7,6 +7,8 @@ import com.qa.base.BasePage;
 import com.qa.hubspot.utils.ConstantsUtil;
 import com.qa.hubspot.utils.ElementUtil;
 
+import io.qameta.allure.Step;
+
 /**
  * 
  * @author jey
@@ -45,19 +47,20 @@ public class LoginPage extends BasePage {
 	
 	
 	//3. Page actions 
+	@Step("login page title step verification")
 	public String getLoginPageTitle() {
 		//return driver.getTitle();
 		return elementUtil.waitForTitleToBePresent(ConstantsUtil.Login_Page_title, 10);
 		
 	}
-	
-	public boolean verifySignUpLink() {
+	@Step("login page signUp step verification")
+ public boolean verifySignUpLink() {
 		//return driver.findElement(signUpLink).isDisplayed();
 		return elementUtil.doIsDisplayed(signUpLink);
 	}
 	
-	
-	public String verifyTextDontHaveAccount() {
+	@Step("login page link step verification")
+ public String verifyTextDontHaveAccount() {
 	if( driver.findElement(this.dontHaveAccount).isDisplayed()) {
 		return driver.findElement(dontHaveAccount).getText();
 	}
@@ -68,13 +71,17 @@ public class LoginPage extends BasePage {
 	//this method they can use withoud hard coded 
 	//above and below username password looks same but with the help 
 	//of this im differentiation
-	public HomePage doLogin(String username, String password) {
+	
+	@Step("login page actual login step verification with username: {0} and password: {1}")
+  public HomePage doLogin(String username, String password) {
 //		driver.findElement(this.username).sendKeys(username);
 //		driver.findElement(this.password).sendKeys(password);
 //		driver.findElement(this.LoginButton).click();
 //		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		
-		elementUtil.waitForElementToBeVisible(this.username, 10);
+		
+   elementUtil.waitForElementToBeVisible(this.username, 10);
+		
 		elementUtil.doSendKeys(this.username, username);
 		elementUtil.doSendKeys(this.password, password);
 		elementUtil.doClick(this.LoginButton);

@@ -19,9 +19,6 @@ public class BaseTest {
 	public LoginPage loginPage;
 	public Properties prop;
 	
-	
-
-
 
 
 	@BeforeTest

@@ -1,0 +1,32 @@
+thread local concept 
+is responsible to execute test cases in parallel mode with different browsers 
+lets say we have multiple test cases and every test case is executing with different browser 
+in that case we dont know what test case running in which thread 
+
+
+so what happens if we are applying any kind a listener in our framework 
+like testng report, allure report, pdf report, tesult report listener 
+
+if we dont use thread local concept 
+it might disturb our framework 
+because we running in parrallel mode multiple test cases few browsers 
+and at  the end any havy report tool might confuse then it will override report to another test which 
+is executed but it marked as failed or vice versa 
+for example lets say there two test cases one is passed another is failed 
+but in the report is says both is failed why because it takes latest report this kind a issues is quite 
+common in parallel execution 
+so to solve this proble we are using thread local concept with the help of the java 
+
+in framework its better to apply thread local driver in base page so everytime to call
+
+when we are applying tld driver we have to apply first set then get method 
+note: its not a getter and setter 
+get will give you driver 
+set will set it 
+
+along with that when we are applying to the get method in tldriver
+we are providing with synchronization so its responsible 
+lets say whenever any thread using specific driver it wont disturb another thread 
+
+
+and we are running our test cases with different thread 

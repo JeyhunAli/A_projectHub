@@ -62,7 +62,25 @@
 //	}
 //
 //	
+//	export M2_HOME=/Users/NaveenKhunteta/Documents/Maven/apache-maven-3.5.0 
+//export PATH=$PATH:$M2_HOME/bin
 //	
-//	
-//	
+	//        /Users/jey/Downloads/apache-maven-3.6.3 
 //}
+
+
+
+
+
+
+
+//    :wq! enter
+
+
+    //   ~/.bash_profile
+
+///**
+// * export M2_HOME=/Users/jey/Downloads/apache-maven-3.6.3
+// * export PATH=$PATH:$M2_HOME/bin
+// * 
+// * 

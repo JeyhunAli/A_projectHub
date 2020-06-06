@@ -7,6 +7,12 @@ import org.testng.annotations.Test;
 import com.qa.base.BaseTest;
 import com.qa.hubspot.utils.ConstantsUtil;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 /**
  * 
  * @author Ali jeyhun
@@ -21,11 +27,13 @@ import com.qa.hubspot.utils.ConstantsUtil;
  * 
  *
  */
-
+@Epic("Epic - 001: Login Page functionality and features testing design")
+@Story("User Story - 002 Login Page title, signUp link Login pattern functionality ")
 public class LoginPageTest extends BaseTest{
-	
-	
 
+
+	@Severity(SeverityLevel.NORMAL)
+	@Description("this method is responsipble about title of the webPage")
 	@Test(priority = 2)
 	public void verifyLoginPageTest() {
 		String title = loginPage.getLoginPageTitle();
@@ -33,31 +41,33 @@ public class LoginPageTest extends BaseTest{
 		Assert.assertEquals(title, ConstantsUtil.Login_Page_title, "login page title is not matched");
 	}
 
+	@Severity(SeverityLevel.NORMAL)
 	@Test (priority = 1)
 	public void verifySignUpLink() {
 		Assert.assertTrue(loginPage.verifySignUpLink(),"signup link is not displayed ");
-		
-		}
-	
+
+	}
+	@Description("this method is responsible about the link of dont have an account")
 	@Test
-    public void verifyAccountdontHaveText() {
+	public void verifyAccountdontHaveText() {
 
 		String donthaveaccountText = loginPage.verifyTextDontHaveAccount();
-		
+
 		System.out.println("The Don't have an account? text displayed: "+donthaveaccountText);
 		Assert.assertEquals(donthaveaccountText, ConstantsUtil.Login_Page_Dont_Have_An_Account,"not matched");
-	
-	
+
+
 	}
 
-
+	@Description("login is most importnat test case")
+	@Severity(SeverityLevel.BLOCKER)
 	@Test(priority = 3)
 	public void verifyLoginTest() {
 		loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
-	
-	
+
+
 
 
 
