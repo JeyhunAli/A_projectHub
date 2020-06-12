@@ -3,34 +3,34 @@
 
 <suite name="HubSpot App Test Automation suite" verbose="5">
 
-	
+
 
 
 
 
 	<listeners>
 
-		<listener
+	<!-- 	<listener
 			class-name="com.qa.hubspot.listeners.ExtentReportListener" />
 
-	<!-- 	<listener class-name="com.qa.hubspot.listeners.pdfListener" />
+		<listener class-name="com.qa.hubspot.listeners.pdfListener" />
  -->
 		<listener
 			class-name="com.qa.hubspot.listeners.TestAllureListener" />
- <!-- 
-		<listener
+
+		<!-- <listener
 			class-name="com.qa.hubspot.listeners.TesultsListener" />
 
-		 <listener
+		<listener
 			class-name="com.qa.hubspot.listeners.ScreenshotListener" />
-  -->
+ -->
 	</listeners>
 
 
 
 
 	<test name="Login Page Test">
-	
+
 		<classes>
 			<class name="com.qa.hubspot.tests.LoginPageTest" />
 		</classes>
