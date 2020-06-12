@@ -1,0 +1,9 @@
+-D in terminal is used to pass command line argument with the help of maven 
+mvn clean instal -Denv="qa"
+
+multiple propertirs file is used for different env so everytime when need to execute test cases on 
+on diffrenet env like dev, qa, stage, production, have to pass that prop file argument with 
+help of the maven then it will execute specific env value 
+
+
+

@@ -2,7 +2,6 @@ package com.qa.hubspot.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -21,6 +20,7 @@ public class ElementUtil {
 			this.driver = driver;
 		}
 
+		
 		public List<WebElement> getElements(By locator) {
 			List<WebElement> elementsList = driver.findElements(locator);
 			return elementsList;

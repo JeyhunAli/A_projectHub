@@ -16,6 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import com.qa.hubspot.utils.ElementUtil;
+import com.qa.hubspot.utils.OptionsManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -31,8 +32,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BasePage {
 
 	WebDriver driver;
-	Properties prop;
+	public Properties prop;
 	public ElementUtil elementUtil;
+	public OptionsManager optionsManager;
+	
 	
 	
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
@@ -43,22 +46,23 @@ public class BasePage {
 	}
 	
 	
-	
-
-
 	public WebDriver init_driver(Properties prop) {
 		
+		optionsManager = new OptionsManager(prop);
+		
+		
 		String browserName =  prop.getProperty("browser");
+		
 
 		if(browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			tlDriver.set(new ChromeDriver());
+			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 			//driver = new ChromeDriver();
 		}
 
 		if(browserName.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			tlDriver.set(new FirefoxDriver());
+			tlDriver.set(new FirefoxDriver(optionsManager.getFireFoxOptions()));
 			//driver = new FirefoxDriver();
 		}
 
@@ -91,14 +95,53 @@ public class BasePage {
 	 * 
 	 * file path here u see ./ it means current directory of your file path 
 	 * 
+	 * 
+	 * below in new code im trying to explain that if there multiple env 
+	 * i can run my test cases accordingly 
+	 * for example if the given value is qa, dev or stage or maybe its prod env 
+	 * according that i can execute the test cases 
+	 * for that im using if else condition with  the swith case 
+	 * first env and path value are null then with the getproperty method imm getting 
+	 * env 
+	 * 
 	 * @return prop
 	 */
 	
 	public Properties init_prop() {
 		
 		prop = new Properties();
+		
+		String path = null;
+		String env = null;
+		
 		try {
-			FileInputStream ip = new FileInputStream("./src/main/java/com/qa/config/config.properties");
+			
+			env = System.getProperty("env");
+			System.out.println("env value is ---- " + env);
+			
+			if(env == null) {
+				path = "./src/main/java/com/qa/config/config.properties";
+			}
+			else {
+				switch (env) {
+				case "qa":
+					path = "./src/main/java/com/qa/config/qa.config.properties";
+					break;
+				case "dev":
+					path = "./src/main/java/com/qa/config/dev.config.properties";
+					break;
+				case "stage":
+					path = "./src/main/java/com/qa/config/stage.config.properties";
+					break;
+
+				default:
+					System.out.println("please pass the correct env "+env);
+					break;
+				}
+			}
+			
+			
+			FileInputStream ip = new FileInputStream(path);
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
