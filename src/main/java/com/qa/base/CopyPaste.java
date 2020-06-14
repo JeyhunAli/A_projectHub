@@ -83,4 +83,38 @@
 // * export M2_HOME=/Users/jey/Downloads/apache-maven-3.6.3
 // * export PATH=$PATH:$M2_HOME/bin
 // * 
+
+
+/**
+ * browser = chrome
+url = https://app.hubspot.com/login/
+username = Ali-ceyhun@list.ru
+password = Hubspot123456789
+headless = false
+accountname = Hshshshsh
+incognito = false
+highlight = yes
+remote = 
+huburl = 
+ * 
+ * 
+ * 
+ * browser = chrome
+headless = no
+url = https://app.hubspot.com/login
+username = anandxingh2@gmail.com
+password = Test@1234
+accountname = 
+highlight = yes
+ */
+
+
+
+
+
+
+
+
+
+
 // * 
