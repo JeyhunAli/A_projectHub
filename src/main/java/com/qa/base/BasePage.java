@@ -48,10 +48,31 @@ public class BasePage {
 	
 	public WebDriver init_driver(Properties prop) {
 		
+		
+		
+		/**
+		 * 
+		 * this method is defining one logic that 
+		 * lets say if im not passing any env var for example browser name on the terminal 
+		 * then execute as a normal take the browser from config.properties file 
+		 * but if im passing any env browser value then come to else part take the browser from environment
+		 * logic from getproperty 
+		 */
+		
+		
+		String browserName = null;
+		if (System.getProperty("browser") == null) {
+			browserName = prop.getProperty("browser");
+		} else {
+			browserName = System.getProperty("browser");
+		}
+
+		System.out.println("Running on --->" + browserName + " browser");
+		
 		optionsManager = new OptionsManager(prop);
 		
 		
-		String browserName =  prop.getProperty("browser");
+		// String browserName =  prop.getProperty("browser");
 		
 
 		if(browserName.equalsIgnoreCase("chrome")) {
