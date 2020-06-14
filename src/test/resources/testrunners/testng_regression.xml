@@ -36,13 +36,13 @@
 		</classes>
 	</test>
 
-
+<!-- 
 	<test name="Home Page Test">
 		<classes>
 			<class name="com.qa.hubspot.tests.HomePageTest" />
 		</classes>
 	</test>
-
+ -->
 
 	<!-- <test name="Contacts Page Test"> <classes> <class name="com.qa.hubspot.tests.ContactsTest" 
 		/> </classes> </test> -->
