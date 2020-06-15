@@ -32,10 +32,6 @@ pipeline {
           }
         }
 
-        stage('firefox') {
-          steps {
-            sh 'mvn test -Denv=qa -Dbrowser=firefox'
-          }
         }
 
       }
