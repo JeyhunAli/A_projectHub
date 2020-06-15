@@ -29,7 +29,7 @@
 
 
 	<test name="Login Page Test">
-	<parameter name="browser" value="chrome"/>
+	<parameter name="browser" value="firefox"/>
 
 		<classes>
 			<class name="com.qa.hubspot.tests.LoginPageTest" />
@@ -37,14 +37,14 @@
 	</test>
 
 
- 	<test name="Home Page Test">
+ <!-- 	<test name="Home Page Test">
 	<parameter name="browser" value="firefox"/>
 		<classes>
 			<class name="com.qa.hubspot.tests.HomePageTest" />
 		</classes>
 	</test>
  
-
+ -->
 	<!-- <test name="Contacts Page Test"> <classes> <class name="com.qa.hubspot.tests.ContactsTest" 
 		/> </classes> </test> -->
 
