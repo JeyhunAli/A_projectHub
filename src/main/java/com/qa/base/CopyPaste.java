@@ -63,7 +63,7 @@
 //
 //	
 //	export M2_HOME=/Users/NaveenKhunteta/Documents/Maven/apache-maven-3.5.0 
-//export PATH=$PATH:$M2_HOME/bin
+//    export PATH=$PATH:$M2_HOME/bin
 //	
 	//        /Users/jey/Downloads/apache-maven-3.6.3 
 //}
@@ -111,7 +111,7 @@ highlight = yes
 
 
 
-
+//thread-count="3" parallel="tests">
 
 
 

@@ -5,16 +5,13 @@
     <listener class-name="com.qa.hubspot.listeners.TestAllureListener"/>
   </listeners>
   <test thread-count="3" verbose="3" name="Login Page Test(failed)" parallel="tests">
-    <parameter name="browser" value="firefox"/>
+    <parameter name="browser" value="safari"/>
     <classes>
       <class name="com.qa.hubspot.tests.LoginPageTest">
         <methods>
           <include name="verifyAccountdontHaveText"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="verifyLoginTest"/>
-          <include name="verifySignUpLink"/>
-          <include name="verifyLoginPageTest"/>
         </methods>
       </class> <!-- com.qa.hubspot.tests.LoginPageTest -->
     </classes>

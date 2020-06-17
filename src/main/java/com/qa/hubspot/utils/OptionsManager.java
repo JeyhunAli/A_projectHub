@@ -32,7 +32,7 @@ public class OptionsManager {
 	}
 	
 	
-	public FirefoxOptions getFireFoxOptions() {
+	public FirefoxOptions getFirefoxOptions() {
 		fo = new FirefoxOptions();
 		
 		if(Boolean.parseBoolean(prop.getProperty("headless"))) co.addArguments("--headless");
