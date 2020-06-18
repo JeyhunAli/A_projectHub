@@ -43,13 +43,13 @@ public class LoginPageTest extends BaseTest{
 	}
 
 	@Severity(SeverityLevel.NORMAL)
-	@Test (priority = 1, enabled = true)
+	@Test (priority = 1, enabled = false)
 	public void verifySignUpLink() {
 		Assert.assertTrue(loginPage.verifySignUpLink(),"signup link is not displayed ");
 
 	}
 	@Description("this method is responsible about the link of dont have an account")
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void verifyAccountdontHaveText() {
 
 		String donthaveaccountText = loginPage.verifyTextDontHaveAccount();
@@ -62,7 +62,7 @@ public class LoginPageTest extends BaseTest{
 
 	@Description("login is most importnat test case")
 	@Severity(SeverityLevel.BLOCKER)
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void verifyLoginTest() {
 		loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}

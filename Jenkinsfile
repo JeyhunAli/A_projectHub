@@ -92,4 +92,3 @@ pipeline {
     maven 'M3'
   }
 }
-
