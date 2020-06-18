@@ -138,7 +138,7 @@ public class BasePage {
 try {
 			
 			env = System.getProperty("env");
-			System.out.println("env value is ---- " + env);
+			System.out.println("env value is ---->> " + env);
 			
 			if(env == null) {
 				path = "./src/main/java/com/qa/config/config.properties";

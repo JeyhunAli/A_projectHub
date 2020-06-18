@@ -35,6 +35,7 @@ public class LoginPageTest extends BaseTest{
 	@Severity(SeverityLevel.NORMAL)
 	@Description("this method is responsipble about title of the webPage")
 	@Test(priority = 2)
+	
 	public void verifyLoginPageTest() {
 		String title = loginPage.getLoginPageTitle();
 		System.out.println("Login page title is "+ title);
@@ -42,13 +43,13 @@ public class LoginPageTest extends BaseTest{
 	}
 
 	@Severity(SeverityLevel.NORMAL)
-	@Test (priority = 1)
+	@Test (priority = 1, enabled = true)
 	public void verifySignUpLink() {
 		Assert.assertTrue(loginPage.verifySignUpLink(),"signup link is not displayed ");
 
 	}
 	@Description("this method is responsible about the link of dont have an account")
-	@Test
+	@Test(enabled = true)
 	public void verifyAccountdontHaveText() {
 
 		String donthaveaccountText = loginPage.verifyTextDontHaveAccount();
@@ -61,7 +62,7 @@ public class LoginPageTest extends BaseTest{
 
 	@Description("login is most importnat test case")
 	@Severity(SeverityLevel.BLOCKER)
-	@Test(priority = 3)
+	@Test(priority = 3, enabled = true)
 	public void verifyLoginTest() {
 		loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}

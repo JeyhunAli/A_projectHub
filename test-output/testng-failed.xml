@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" guice-stage="DEVELOPMENT" verbose="3" name="Failed suite [Hub spot Test automtion regression suite]" parallel="tests">
-  <listeners>
-    <listener class-name="com.qa.hubspot.listeners.ExtentReportListener"/>
-  </listeners>
-  <test thread-count="2" verbose="3" name="Home Page Test(failed)" parallel="tests">
-    <parameter name="browser" value="firefox"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.hubspot.tests.HomePageTest">
+      <class name="com.qa.hubspot.tests.LoginPageTest">
         <methods>
+          <include name="verifyAccountdontHaveText"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="verifyLoggedInUserTest"/>
-          <include name="homeStup"/>
+          <include name="verifyLoginTest"/>
+          <include name="verifySignUpLink"/>
+          <include name="verifyLoginPageTest"/>
         </methods>
-      </class> <!-- com.qa.hubspot.tests.HomePageTest -->
+      </class> <!-- com.qa.hubspot.tests.LoginPageTest -->
     </classes>
-  </test> <!-- Home Page Test(failed) -->
-</suite> <!-- Failed suite [Hub spot Test automtion regression suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
