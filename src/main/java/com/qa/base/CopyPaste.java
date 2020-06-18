@@ -113,6 +113,9 @@ highlight = yes
 
 //thread-count="3" parallel="tests">
 
+//thread-count="2" parallel="methods">
+
+//<parameter name="browser" value="firefox" />
 
 
 
