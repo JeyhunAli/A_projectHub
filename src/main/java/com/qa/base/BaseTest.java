@@ -19,7 +19,7 @@ public class BaseTest {
 	public Properties prop;
 
 
-	@Parameters("browser")
+	@Parameters({"browser"})
 	@BeforeTest
 	public void setUp(String browserName) {
 
