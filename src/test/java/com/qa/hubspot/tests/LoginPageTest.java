@@ -2,9 +2,11 @@ package com.qa.hubspot.tests;
 
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.qa.base.BaseTest;
+import com.qa.hubspot.listeners.TestAllureListener;
 import com.qa.hubspot.utils.ConstantsUtil;
 
 import io.qameta.allure.Description;
@@ -27,6 +29,7 @@ import io.qameta.allure.Story;
  * 
  *
  */
+//@Listeners(TestAllureListener.class)
 @Epic("Epic - 001: Login Page functionality and features testing design")
 @Story("User Story - 002 Login Page title, signUp link Login pattern functionality ")
 public class LoginPageTest extends BaseTest{

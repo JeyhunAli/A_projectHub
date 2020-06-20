@@ -69,6 +69,7 @@ public class BasePage {
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				init_remoteWebDriver(browserName);
 			}
+			
 			else {
 				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 			}
@@ -78,6 +79,7 @@ public class BasePage {
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				init_remoteWebDriver(browserName);
 			}
+			
 			else {
 				tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
 				
